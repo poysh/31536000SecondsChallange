@@ -11,3 +11,5 @@ Cargo.lock
 
 # Compiled files from C
 *.out
+
+.DS_Store
