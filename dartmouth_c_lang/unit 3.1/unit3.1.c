@@ -4,6 +4,7 @@
 int sum(int, int);
 void printLine(int, char);
 void printTriangle(int, char);
+void printSmallest(void);
 
 int main(void){
     int a,b;
@@ -37,4 +38,22 @@ void printTriangle(int nLines, char pattern){
         count = line + 1;
         printLine(count, pattern);
     }
+}
+
+void printSmallest(void){
+    int nNumbers;
+    int current;
+    int i;
+    int smallest = 999;
+    
+    scanf("%d", &nNumbers);
+    for (i = 0; i < nNumbers; i++){
+        scanf("%d", &current);
+        smallest = min(current, smallest);
+    }
+    printf("%d", smallest);
+}
+
+int min(int x, int y){
+    return x > y ? y : x;
 }
