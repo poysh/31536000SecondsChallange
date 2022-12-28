@@ -5,6 +5,10 @@ int sum(int, int);
 void printLine(int, char);
 void printTriangle(int, char);
 void printSmallest(void);
+int min(int, int);
+int factorialRec(int);
+void factorial(int);
+int fibonacci(int);
 
 int main(void){
     int a,b;
@@ -14,7 +18,14 @@ int main(void){
     result = sum(a, b); //ARGUMENTS
     printf("%d\n", result);
 
-    printTriangle(result, '*');
+    // printTriangle(result, '*');
+
+    factorial(result);
+
+    // printf("\n%d\n", factorialRec(result));
+
+    printf("%d", fibonacci(result));
+
     return 0;
 }
 
@@ -56,4 +67,34 @@ void printSmallest(void){
 
 int min(int x, int y){
     return x > y ? y : x;
+}
+
+void factorial(int n){
+    int i;
+    int facto;
+
+    facto = 1;
+    for (i = 1; i <= n; i++){
+        facto = i * facto;
+    }
+    printf("%d", facto);
+}
+
+int factorialRec(int n){
+    if (n == 0){
+        return 1;
+    } else {
+        return n * factorialRec(n - 1);
+    }
+}
+
+//Fibonacci numbers: 0 1 1 2 3 5 8 13 21 34
+int fibonacci(int n){
+    if (n == 1){
+        return 0;
+    } else if ( n == 2){
+        return 1;
+    } else {
+        return (fibonacci(n - 1) + fibonacci(n-2));
+    }
 }
