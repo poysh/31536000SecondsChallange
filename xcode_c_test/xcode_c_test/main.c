@@ -12,22 +12,74 @@ double convertWeight(double);
 double convertDistance(double);
 void converter(void);
 int sumOfDigits(int);
+int evaluateInput(void);
+int calculateSize(int, char);
+void breakDown(int);
 
-/*
- Please write a C-program that uses a recursive function called "sumOfDigits()" to compute the sum of the digits of a number. To do so, your main function should first read an integer number as input and then call sumOfDigits(), which should in turn call itself until there are no digits left to sum, at which point the final sum should display to the user.
-
- Here is the main idea of how the recursion in sumOfDigits() should work:
-
- sumOfDigits(6452) = 2 + sumOfDigits(645)
-
- sumOfDigits(645) = 5 + sumOfDigits(64)
- */
-
-int main(int argc, const char * argv[]) {
-    int number;
+int main(void){
+    int size;
+    char type;
+    int result;
     
-    scanf("%d", &number);
-    printf("%d", sumOfDigits(number));
+    scanf("%c%d", &type, &size);
+    result = calculateSize(size, type);
+    breakDown(result);
+    return 0;
+}
+
+void breakDown(int size){
+    if (size < 1000){
+        printf("%d B", size);
+    } else if(size < 1000000 ){
+        printf("%d KB and %d B", size/1000, size%1000);
+    } else if(size >= 1000000){
+        printf("%d MB and %d KB and %d B", size/(1000 * 1000), (size/ 1000) % 1000, size%1000);
+    }
+}
+
+int calculateSize(int count, char type){
+    if (type == 'i'){
+        return count * sizeof(int);
+    }else if (type == 'c'){
+        return count * sizeof(char);
+    }else if (type == 's'){
+        return count * sizeof(short);
+    }else if (type=='d'){
+        return count * sizeof(double);
+    } else {
+        return -1;
+    }
+}
+
+
+//int main(int argc, const char * argv[]) {
+//    int nLines, i;
+//    int space, result;
+//
+//    scanf("%d", &nLines);
+//    space = 0;
+//    for(i = 0; i < nLines; i++){
+//        result = evaluateInput();
+//        if (result == -1) return 0;
+//        else space = space + result;
+//    }
+//    printf("%d bytes", space);
+//}
+
+int evaluateInput(void){
+    int size;
+    char type;
+    scanf(" %d %s", &size, &type);
+    if(type == 'i'){
+        return size * sizeof(int);
+    } else if (type == 'c'){
+        return size * sizeof(char);
+    } else if (type == 'd'){
+        return size * sizeof(double);
+    } else {
+        printf("Invalid tracking code type");
+        return -1;
+    }
 }
 
 int sumOfDigits(int n){
