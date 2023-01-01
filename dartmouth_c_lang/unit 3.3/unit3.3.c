@@ -3,55 +3,59 @@
 void getPointerAddress();
 void dereferencePointer();
 void swapVariable();
-void reset(int *);
-void resetArrayNotation(int []);
+void reset(int*);
+void resetArrayNotation(int[]);
 
-void getPointerAddress(){
+void getPointerAddress()
+{
     int a = 42;
     double b = 53.94;
     char c = 'p';
 
-    int * addressOfA = &a;
+    int* addressOfA = &a;
     printf("address of %p\n", addressOfA);
-    double * addressOfB = &b;
+    double* addressOfB = &b;
     printf("address of %p\n", addressOfB);
-    char * addressOfC = &c;
+    char* addressOfC = &c;
     printf("address of %p\n", addressOfC);
 }
 
-void dereferencePointer(){
+void dereferencePointer()
+{
     int a = 42;
-    int * addressOfA = &a;
+    int* addressOfA = &a;
     printf("Address: %p, value at address: %d\n", addressOfA, *addressOfA);
-    * addressOfA = 32;
-    * addressOfA = * addressOfA + 1;
+    *addressOfA = 32;
+    *addressOfA = *addressOfA + 1;
     printf("Address: %p, value at address: %d\n", addressOfA, *addressOfA);
 }
 
-void swapVariables(int * a, int * b){
-    int tmp = * a;
-    * a = * b;
-    * b = tmp;
+void swapVariables(int* a, int* b)
+{
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
 }
 
-int arrayAddress(){
-    int arr[3] = {15, 16, 17};
-    for(int i = 0; i < 3; i++){
+int arrayAddress()
+{
+    int arr[3] = { 15, 16, 17 };
+    for (int i = 0; i < 3; i++) {
         printf("%d\n", arr[i]);
     }
-    printf("%p\n",arr);
-    int * ptr = arr;
-    * ptr = 2;
-    * (ptr + 1) = 3; //pointer arithmetic
-    for(int i = 0; i < 3; i++){
+    printf("%p\n", arr);
+    int* ptr = arr;
+    *ptr = 2;
+    *(ptr + 1) = 3; // pointer arithmetic
+    for (int i = 0; i < 3; i++) {
         printf("%d\n", arr[i]);
     }
     return 0;
 }
 
-
-void setup() {
-    int arr[3] = {15, 16, 17};
+void setup()
+{
+    int arr[3] = { 15, 16, 17 };
     reset(arr);
     arr[0] = 15;
     arr[1] = 16;
@@ -59,19 +63,22 @@ void setup() {
     resetArrayNotation(arr);
 }
 
-void reset(int * ptr){
+void reset(int* ptr)
+{
     *(ptr + 0) = 0;
-    *(ptr +1) = 0;
-    *(ptr +2) = 0;
+    *(ptr + 1) = 0;
+    *(ptr + 2) = 0;
 }
 
-void resetArrayNotation(int ptr[]){
+void resetArrayNotation(int ptr[])
+{
     ptr[0] = 0;
     ptr[1] = 0;
     ptr[2] = 0;
 }
 
-int main(){
+int main()
+{
     getPointerAddress();
     dereferencePointer();
     arrayAddress();
@@ -79,7 +86,7 @@ int main(){
 
     int a = 24;
     int b = 42;
-    swapVariables( &a, &b);
+    swapVariables(&a, &b);
     printf("a: %d, b: %d", a, b);
     return 0;
 }
