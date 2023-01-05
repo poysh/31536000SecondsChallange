@@ -16,6 +16,7 @@ struct digit {
 struct digit* createDigit(int);
 struct digit* append(struct digit * pt1, struct digit * pt2);
 void freeList(struct digit * start);
+void printList(struct digit * start);
 
 int main(int argc, const char* argv[])
 {
@@ -29,6 +30,8 @@ int main(int argc, const char* argv[])
     end = append(end, newDigitptr);
     newDigitptr = createDigit(third);
     end =  append(end, newDigitptr);
+    
+    printList(start);
     
     printf("\nWe are storing %d at address %p", newDigitptr->num, newDigitptr);
     freeList(start);
@@ -57,5 +60,14 @@ void freeList(struct digit * start){
         start = ptr;
         ptr = ptr->next;
         free(start);
+    }
+}
+
+void printList(struct digit * start){
+    struct digit *next = start;
+    while(next != NULL){
+        next = start->next;
+        printf("%d", start->num);
+        start = next;
     }
 }
