@@ -50,24 +50,25 @@ struct digit* createDigit(int dig)
 struct digit* append(struct digit * end, struct digit * newDigitptr)
 {
     end->next = newDigitptr;
-    end = newDigitptr;
-    return(end);
+//    end = newDigitptr;
+    return(newDigitptr);
 }
 
 void freeList(struct digit * start){
     struct digit *ptr = start;
+    struct digit *tmp;
     while (ptr != NULL) {
-        start = ptr;
-        ptr = ptr->next;
-        free(start);
+        tmp = ptr->next;
+        free(ptr);
+        ptr = tmp;
+
     }
 }
 
 void printList(struct digit * start){
-    struct digit *next = start;
-    while(next != NULL){
-        next = start->next;
-        printf("%d", start->num);
-        start = next;
+    struct digit *ptr = start;
+    while(ptr != NULL){
+        printf("%d", ptr->num);
+        ptr = ptr->next;
     }
 }
