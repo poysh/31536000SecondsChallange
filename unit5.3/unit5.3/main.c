@@ -17,23 +17,13 @@ struct digit* createDigit(int);
 struct digit* append(struct digit * pt1, struct digit * pt2);
 void freeList(struct digit * start);
 void printList(struct digit * start);
+struct digit* readNumber(void);
 
 int main(int argc, const char* argv[])
 {
-    struct digit *newDigitptr, *start, *end;
-    int first = 5;
-    int second = 7;
-    int third = 9;
-    start = createDigit(first);
-    end = start;
-    newDigitptr = createDigit(second);
-    end = append(end, newDigitptr);
-    newDigitptr = createDigit(third);
-    end =  append(end, newDigitptr);
-    
+    struct digit *start;
+    start = readNumber();
     printList(start);
-    
-    printf("\nWe are storing %d at address %p", newDigitptr->num, newDigitptr);
     freeList(start);
 
     return 0;
@@ -71,4 +61,25 @@ void printList(struct digit * start){
         printf("%d", ptr->num);
         ptr = ptr->next;
     }
+}
+
+struct digit* readNumber()
+{
+    char c;
+    int d;
+    struct digit *start, *end, *newptr;
+    start = NULL;
+    scanf("%c", &c);
+    while (c!='\n') {
+        d = c - 48;
+        newptr = createDigit(d);
+        if (start == NULL){
+            start = newptr;
+            end = start;
+        } else {
+            end = append(end, newptr);
+        }
+        scanf("%c", &c);
+    }
+    return start;
 }
