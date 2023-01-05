@@ -52,10 +52,10 @@ struct digit* append(struct digit * end, struct digit * newDigitptr)
 }
 
 void freeList(struct digit * start){
-    struct digit *nextptr;
-    nextptr = start;
-    while (nextptr->next != NULL) {
-        nextptr = nextptr->next;
-        free(nextptr);
+    struct digit *ptr = start;
+    while (ptr != NULL) {
+        start = ptr;
+        ptr = ptr->next;
+        free(start);
     }
 }
