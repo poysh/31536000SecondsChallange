@@ -19,16 +19,26 @@ void freeList(struct digit * start);
 void printList(struct digit * start);
 struct digit* readNumber(void);
 int divisibleByThree(struct digit * start);
+struct digit * searchNumber(struct digit * start ,int searchNum);
+int changeThrees(struct digit * start);
 
 int main(int argc, const char* argv[])
 {
-    struct digit *start;
+    struct digit *start, *ptr;
     start = readNumber();
     printList(start);
     if (divisibleByThree(start))
             printf("is divisible by 3.\n");
         else
             printf("is not divisible by 3.\n");
+    int searchNum;
+    scanf("%d", &searchNum);
+    ptr = searchNumber(start, searchNum);
+    if (ptr!=NULL) {
+        printf("Found digit %d at location %p.\n", searchNum, ptr);
+    } else {
+        printf("Digit %d not found.\n", searchNum);
+    }
     freeList(start);
 
     return 0;
@@ -103,4 +113,28 @@ int divisibleByThree(struct digit * start)
     } else {
         return 0;
     }
+}
+
+struct digit * searchNumber(struct digit * start, int searchNum)
+{
+    struct digit *ptr = start;
+    while((ptr != NULL) && (ptr->num!=searchNum)){
+        ptr = ptr->next;
+    }
+    return ptr;
+}
+
+int changeThrees(struct digit * start){
+    int counter = 0;
+    struct digit * ptr = start;
+    while(ptr!=NULL){
+        if(ptr->num != 3){
+            ptr = ptr->next;
+        } else {
+            ptr->num = 9;
+            ptr = ptr->next;
+            counter++;
+        }
+    }
+    return counter;
 }
