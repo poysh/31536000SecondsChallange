@@ -14,31 +14,35 @@ struct digit {
 };
 
 struct digit* createDigit(int);
-struct digit* append(struct digit * pt1, struct digit * pt2);
-void freeList(struct digit * start);
-void printList(struct digit * start);
+struct digit* append(struct digit* pt1, struct digit* pt2);
+void freeList(struct digit* start);
+void printList(struct digit* start);
 struct digit* readNumber(void);
-int divisibleByThree(struct digit * start);
-struct digit * searchNumber(struct digit * start ,int searchNum);
-int changeThrees(struct digit * start);
+int divisibleByThree(struct digit* start);
+struct digit* searchNumber(struct digit* start, int searchNum);
+int changeThrees(struct digit* start);
+struct digit* insertAtFront(struct digit* start, struct digit* newptr);
+struct digit* reverseNumber(struct digit* start);
 
 int main(int argc, const char* argv[])
 {
-    struct digit *start, *ptr;
+    struct digit *start, *ptr, *backwards;
     start = readNumber();
     printList(start);
     if (divisibleByThree(start))
-            printf("is divisible by 3.\n");
-        else
-            printf("is not divisible by 3.\n");
+        printf("is divisible by 3.\n");
+    else
+        printf("is not divisible by 3.\n");
     int searchNum;
     scanf("%d", &searchNum);
     ptr = searchNumber(start, searchNum);
-    if (ptr!=NULL) {
+    if (ptr != NULL) {
         printf("Found digit %d at location %p.\n", searchNum, ptr);
     } else {
         printf("Digit %d not found.\n", searchNum);
     }
+    backwards = reverseNumber(start);
+    printList(backwards);
     freeList(start);
 
     return 0;
@@ -52,27 +56,28 @@ struct digit* createDigit(int dig)
     return ptr;
 }
 
-struct digit* append(struct digit * end, struct digit * newDigitptr)
+struct digit* append(struct digit* end, struct digit* newDigitptr)
 {
     end->next = newDigitptr;
-//    end = newDigitptr;
-    return(newDigitptr);
+    //    end = newDigitptr;
+    return (newDigitptr);
 }
 
-void freeList(struct digit * start){
-    struct digit *ptr = start;
-    struct digit *tmp;
+void freeList(struct digit* start)
+{
+    struct digit* ptr = start;
+    struct digit* tmp;
     while (ptr != NULL) {
         tmp = ptr->next;
         free(ptr);
         ptr = tmp;
-
     }
 }
 
-void printList(struct digit * start){
-    struct digit *ptr = start;
-    while(ptr != NULL){
+void printList(struct digit* start)
+{
+    struct digit* ptr = start;
+    while (ptr != NULL) {
         printf("%d", ptr->num);
         ptr = ptr->next;
     }
@@ -85,10 +90,10 @@ struct digit* readNumber()
     struct digit *start, *end, *newptr;
     start = NULL;
     scanf("%c", &c);
-    while (c!='\n') {
+    while (c != '\n') {
         d = c - 48;
         newptr = createDigit(d);
-        if (start == NULL){
+        if (start == NULL) {
             start = newptr;
             end = start;
         } else {
@@ -99,36 +104,37 @@ struct digit* readNumber()
     return start;
 }
 
-int divisibleByThree(struct digit * start)
+int divisibleByThree(struct digit* start)
 {
-    struct digit * tmp = start;
+    struct digit* tmp = start;
     int sum = 0;
-    while(tmp!=NULL){
+    while (tmp != NULL) {
         sum += tmp->num;
         tmp = tmp->next;
     }
     printf("%d", sum);
-    if (sum%3 == 0){
+    if (sum % 3 == 0) {
         return 1;
     } else {
         return 0;
     }
 }
 
-struct digit * searchNumber(struct digit * start, int searchNum)
+struct digit* searchNumber(struct digit* start, int searchNum)
 {
-    struct digit *ptr = start;
-    while((ptr != NULL) && (ptr->num!=searchNum)){
+    struct digit* ptr = start;
+    while ((ptr != NULL) && (ptr->num != searchNum)) {
         ptr = ptr->next;
     }
     return ptr;
 }
 
-int changeThrees(struct digit * start){
+int changeThrees(struct digit* start)
+{
     int counter = 0;
-    struct digit * ptr = start;
-    while(ptr!=NULL){
-        if(ptr->num != 3){
+    struct digit* ptr = start;
+    while (ptr != NULL) {
+        if (ptr->num != 3) {
             ptr = ptr->next;
         } else {
             ptr->num = 9;
@@ -137,4 +143,28 @@ int changeThrees(struct digit * start){
         }
     }
     return counter;
+}
+
+struct digit* insertAtFront(struct digit* start, struct digit* newptr)
+{
+    newptr->next = start;
+    return (newptr);
+}
+
+struct digit* reverseNumber(struct digit* start)
+{
+    struct digit* ptr = start;
+    struct digit* bstart = NULL;
+    struct digit* newdigit;
+
+    if (start != NULL) {
+        bstart = createDigit(start->num);
+        ptr = ptr->next;
+    }
+    while (ptr != NULL) {
+        newdigit = createDigit(ptr->num);
+        bstart = insertAtFront(bstart, newdigit);
+        ptr = ptr->next;
+    }
+    return (bstart);
 }
