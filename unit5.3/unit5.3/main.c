@@ -23,16 +23,18 @@ struct digit* searchNumber(struct digit* start, int searchNum);
 int changeThrees(struct digit* start);
 struct digit* insertAtFront(struct digit* start, struct digit* newptr);
 struct digit* reverseNumber(struct digit* start);
+struct digit * sortedCopy(struct digit * start);
+struct digit * insertIntoSorted(struct digit *start, struct digit *newDig);
 
 int main(int argc, const char* argv[])
 {
-    struct digit *start, *ptr, *backwards;
+    struct digit *start, *ptr, *backwards, *sorted;
     start = readNumber();
     printList(start);
     if (divisibleByThree(start))
-        printf("is divisible by 3.\n");
+        printf(" is divisible by 3.\n");
     else
-        printf("is not divisible by 3.\n");
+        printf(" is not divisible by 3.\n");
     int searchNum;
     scanf("%d", &searchNum);
     ptr = searchNumber(start, searchNum);
@@ -43,8 +45,14 @@ int main(int argc, const char* argv[])
     }
     backwards = reverseNumber(start);
     printList(backwards);
+    printf("\nSorted by digit: ");
+    sorted = sortedCopy(start);
+    printList(sorted);
+    
     freeList(start);
-
+//    freeList(ptr);
+    freeList(backwards);
+    freeList(sorted);
     return 0;
 }
 
@@ -112,7 +120,7 @@ int divisibleByThree(struct digit* start)
         sum += tmp->num;
         tmp = tmp->next;
     }
-    printf("%d", sum);
+//    printf("%d", sum);
     if (sum % 3 == 0) {
         return 1;
     } else {
@@ -167,4 +175,37 @@ struct digit* reverseNumber(struct digit* start)
         ptr = ptr->next;
     }
     return (bstart);
+}
+
+struct digit * insertIntoSorted(struct digit *start, struct digit *newDig) {
+    struct digit *ptr = start;
+    struct digit *prev = NULL;
+    while ((ptr!=NULL) && (ptr->num < newDig->num)) {
+        prev = ptr;
+        ptr = ptr->next;
+    }
+    if (prev == NULL) {
+        start = insertAtFront(start, newDig);
+    } else {
+        prev->next = newDig;
+        newDig->next = ptr;
+    }
+    return(start);
+}
+
+struct digit * sortedCopy(struct digit * start) {
+    struct digit *ptr = start;
+    struct digit *sortedStart = NULL;
+    struct digit *newDigit;
+    
+    if (start!=NULL) {
+        sortedStart = createDigit(start->num);
+        ptr = ptr->next;
+    }
+    while (ptr!=NULL) {
+        newDigit = createDigit(ptr->num);
+        sortedStart = insertIntoSorted(sortedStart, newDigit);
+        ptr = ptr->next;
+    }
+    return(sortedStart);
 }
