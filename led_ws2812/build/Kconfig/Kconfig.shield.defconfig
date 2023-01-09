@@ -1,0 +1,2 @@
+osource "/Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812/boards/shields/*/Kconfig.defconfig"
+osource "/opt/nordic/ncs/v2.2.0/nrf/boards/shields/*/Kconfig.defconfig"

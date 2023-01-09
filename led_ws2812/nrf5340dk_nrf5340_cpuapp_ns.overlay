@@ -1,0 +1,71 @@
+// To get started, press Ctrl+Space (or Option+Esc) to bring up the completion menu and view the available nodes.
+
+// You can also use the buttons in the sidebar to perform actions on nodes.
+// Actions currently available include:
+
+// * Enabling / disabling the node
+// * Adding the bus to a bus
+// * Removing the node
+// * Connecting ADC channels
+
+// For more help, browse the DeviceTree documentation at https: //docs.zephyrproject.org/latest/guides/dts/index.html
+// You can also visit the nRF DeviceTree extension documentation at https: //nrfconnect.github.io/vscode-nrf-connect/devicetree/nrfdevicetree.html
+
+#include <zephyr/dt-bindings/led/led.h>
+
+#include "nrf52-bindings.h"
+
+// &arduino_spi {
+    //     compatible = "nordic,nrf-spim";
+    //     status = "okay";
+    //     /* Note that this pin is not routed to the gpio header on nRF5340-DK, it routed directly to the external flash */
+    //     // mosi-pin = <16>;
+    //     led_strip: ws2812@0 {
+        //         compatible = "worldsemi,ws2812-spi";
+        //         label = "WS2812";
+
+        //         /* SPI */
+        //         reg = <0>; /* ignored, but necessary for SPI bindings */
+        //         spi-max-frequency = <SPI_FREQ>;
+
+        //         /* WS2812 */
+        //         chain-length = <24>; /* arbitrary; change at will */
+        //         color-mapping = <LED_COLOR_ID_GREEN
+        //         LED_COLOR_ID_RED
+        //         LED_COLOR_ID_BLUE>;
+        //         spi-one-frame = <ONE_FRAME>;
+        //         spi-zero-frame = <ZERO_FRAME>;
+    //     };
+// };
+
+// / {
+    //     aliases {
+        //         led-strip = &led_strip;
+    //     };
+// };
+
+&arduino_spi {/* MOSI on D11 / P0.23 */
+    compatible = "nordic,nrf-spim";
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+
+        /* SPI */
+        reg = <0>; /* ignored, but necessary for SPI bindings */
+        spi-max-frequency = <SPI_FREQ>;
+
+        /* WS2812 */
+        chain-length = <24>; /* arbitrary; change at will */
+        color-mapping = <   LED_COLOR_ID_GREEN
+        LED_COLOR_ID_RED
+        LED_COLOR_ID_BLUE>;
+        spi-one-frame = <ONE_FRAME>;
+        spi-zero-frame = <ZERO_FRAME>;
+    };
+};
+
+/ {
+    aliases {
+        led-strip = &led_strip;
+    };
+};
+
