@@ -26,3 +26,7 @@ xcuserdata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
+
+### Zephyr ###
+# Ignore build directory
+**/build/
