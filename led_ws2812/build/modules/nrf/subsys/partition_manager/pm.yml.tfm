@@ -5,7 +5,7 @@ tfm_sram:
   region: sram_primary
 tfm:
   placement: {before: [app]}
-  size: 0x10000
+  size: 0x8000
 tfm_secure:
   span: [mcuboot_pad, tfm]
 tfm_nonsecure:

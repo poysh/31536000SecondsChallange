@@ -31,9 +31,11 @@ static const struct led_rgb colors[] = {
 	RGB(0x00, 0x00, 0x0f), /* blue */
 };
 
+// initialize struct of type led_rgb array, in our case 24 pixel leds
 struct led_rgb pixels[STRIP_NUM_PIXELS];
 
-static const struct device *const strip = DEVICE_DT_GET(STRIP_NODE);
+// const (*const) pointer, we can change the value of object pointed by pointer, but cannot change the pointer to point another variable. 
+static const struct device *const strip = DEVICE_DT_GET(STRIP_NODE); 
 
 void main(void)
 {

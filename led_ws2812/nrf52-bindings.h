@@ -13,7 +13,7 @@
  * That's cutting it a bit close to the edge of the timing parameters,
  * but it seems to work on AdaFruit LED rings.
  */
-#define SPI_FREQ    8000000
+#define SPI_FREQ    4000000
 #define ZERO_FRAME  0x40
 #define ONE_FRAME   0x70
 

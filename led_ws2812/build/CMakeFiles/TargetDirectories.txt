@@ -89,8 +89,8 @@
 /Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812/build/zephyr/soc/arm/nordic_nrf/common/CMakeFiles/edit_cache.dir
 /Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812/build/zephyr/boards/CMakeFiles/rebuild_cache.dir
 /Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812/build/zephyr/boards/CMakeFiles/edit_cache.dir
-/Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812/build/zephyr/boards/arm/nrf5340dk_nrf5340/CMakeFiles/rebuild_cache.dir
-/Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812/build/zephyr/boards/arm/nrf5340dk_nrf5340/CMakeFiles/edit_cache.dir
+/Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812/build/zephyr/boards/boards/arm/nrf5340dk_nrf5340_cpuapp_ns/CMakeFiles/rebuild_cache.dir
+/Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812/build/zephyr/boards/boards/arm/nrf5340dk_nrf5340_cpuapp_ns/CMakeFiles/edit_cache.dir
 /Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812/build/zephyr/subsys/CMakeFiles/rebuild_cache.dir
 /Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812/build/zephyr/subsys/CMakeFiles/edit_cache.dir
 /Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812/build/zephyr/subsys/debug/CMakeFiles/rebuild_cache.dir

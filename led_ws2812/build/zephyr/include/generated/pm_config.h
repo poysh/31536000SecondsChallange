@@ -3,8 +3,8 @@
 #define PM_CONFIG_H__
 #define PM_TFM_OFFSET 0x0
 #define PM_TFM_ADDRESS 0x0
-#define PM_TFM_END_ADDRESS 0x10000
-#define PM_TFM_SIZE 0x10000
+#define PM_TFM_END_ADDRESS 0x8000
+#define PM_TFM_SIZE 0x8000
 #define PM_TFM_NAME tfm
 #define PM_TFM_ID 0
 #define PM_tfm_ID PM_TFM_ID
@@ -14,8 +14,8 @@
 #define PM_TFM_DEFAULT_DRIVER_KCONFIG CONFIG_SOC_FLASH_NRF
 #define PM_TFM_SECURE_OFFSET 0x0
 #define PM_TFM_SECURE_ADDRESS 0x0
-#define PM_TFM_SECURE_END_ADDRESS 0x10000
-#define PM_TFM_SECURE_SIZE 0x10000
+#define PM_TFM_SECURE_END_ADDRESS 0x8000
+#define PM_TFM_SECURE_SIZE 0x8000
 #define PM_TFM_SECURE_NAME tfm_secure
 #define PM_TFM_SECURE_ID 1
 #define PM_tfm_secure_ID PM_TFM_SECURE_ID
@@ -23,10 +23,10 @@
 #define PM_1_LABEL TFM_SECURE
 #define PM_TFM_SECURE_DEV flash_controller
 #define PM_TFM_SECURE_DEFAULT_DRIVER_KCONFIG CONFIG_SOC_FLASH_NRF
-#define PM_APP_OFFSET 0x10000
-#define PM_APP_ADDRESS 0x10000
+#define PM_APP_OFFSET 0x8000
+#define PM_APP_ADDRESS 0x8000
 #define PM_APP_END_ADDRESS 0x100000
-#define PM_APP_SIZE 0xf0000
+#define PM_APP_SIZE 0xf8000
 #define PM_APP_NAME app
 #define PM_APP_ID 2
 #define PM_app_ID PM_APP_ID
@@ -34,10 +34,10 @@
 #define PM_2_LABEL APP
 #define PM_APP_DEV flash_controller
 #define PM_APP_DEFAULT_DRIVER_KCONFIG CONFIG_SOC_FLASH_NRF
-#define PM_TFM_NONSECURE_OFFSET 0x10000
-#define PM_TFM_NONSECURE_ADDRESS 0x10000
+#define PM_TFM_NONSECURE_OFFSET 0x8000
+#define PM_TFM_NONSECURE_ADDRESS 0x8000
 #define PM_TFM_NONSECURE_END_ADDRESS 0x100000
-#define PM_TFM_NONSECURE_SIZE 0xf0000
+#define PM_TFM_NONSECURE_SIZE 0xf8000
 #define PM_TFM_NONSECURE_NAME tfm_nonsecure
 #define PM_TFM_NONSECURE_ID 3
 #define PM_tfm_nonsecure_ID PM_TFM_NONSECURE_ID
@@ -71,9 +71,9 @@
 #define PM_SRAM_PRIMARY_SIZE 0x78000
 #define PM_SRAM_PRIMARY_NAME sram_primary
 #define PM_NUM 4
-#define PM_ALL_BY_SIZE "otp tfm_sram sram_secure tfm tfm_secure sram_primary sram_nonsecure app tfm_nonsecure"
-#define PM_ADDRESS 0x10000
-#define PM_SIZE 0xf0000
+#define PM_ALL_BY_SIZE "otp tfm tfm_sram sram_secure tfm_secure sram_primary sram_nonsecure app tfm_nonsecure"
+#define PM_ADDRESS 0x8000
+#define PM_SIZE 0xf8000
 #define PM_SRAM_ADDRESS 0x20008000
 #define PM_SRAM_SIZE 0x78000
 #endif /* PM_CONFIG_H__ */

@@ -115,8 +115,8 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//C compiler
-CMAKE_C_COMPILER:STRING=/opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+//Path to a program.
+CMAKE_C_COMPILER:FILEPATH=/opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -299,11 +299,7 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 //Path to a program.
 DTC:FILEPATH=/opt/nordic/ncs/toolchains/v2.2.0/bin/dtc
 
-//If desired, you can build the application using the DT configuration
-// settings specified in an alternate .overlay file using this
-// parameter. These settings will override the settings in the
-// board's .dts file. Multiple files may be listed, e.g. DTC_OVERLAY_FILE="dts1.overlay
-// dts2.overlay"
+//No help, variable specified on the command line.
 DTC_OVERLAY_FILE:STRING=/Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812/nrf5340dk_nrf5340_cpuapp_ns.overlay
 
 //Path to a program.
@@ -390,8 +386,6 @@ led_ws2812_SOURCE_DIR:STATIC=/Users/philipczymmek/projects/personal/31536000Seco
 APPLICATION_CONFIG_DIR:INTERNAL=/Users/philipczymmek/projects/personal/31536000SecondsChallange/led_ws2812
 //DT bindings root directories
 CACHED_DTS_ROOT_BINDINGS:INTERNAL=/opt/nordic/ncs/v2.2.0/nrf/dts/bindings;/opt/nordic/ncs/v2.2.0/zephyr/dts/bindings
-CLI_CONFIG_DEBUG_OPTIMIZATIONS:INTERNAL=y
-CLI_CONFIG_DEBUG_THREAD_INFO:INTERNAL=y
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -443,8 +437,6 @@ CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_COMPILER
-CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_AR
 CMAKE_C_COMPILER_AR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_RANLIB

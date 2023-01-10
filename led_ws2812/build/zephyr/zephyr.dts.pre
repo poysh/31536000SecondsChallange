@@ -1236,14 +1236,14 @@ zephyr_udc0: &usbd {
 
 
         reg = <0>;
-        spi-max-frequency = <8000000>;
+        spi-max-frequency = <4000000>;
 
 
         chain-length = <24>;
         color-mapping = < 2
         1
         3>;
-        spi-one-frame = <0x70>;
+        spi-one-frame = <0x7c>;
         spi-zero-frame = <0x40>;
     };
 };

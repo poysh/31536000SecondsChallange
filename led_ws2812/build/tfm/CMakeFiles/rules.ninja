@@ -7,7 +7,7 @@
 
 # =============================================================================
 # Project: Trusted Firmware M
-# Configurations: Debug
+# Configurations: MinSizeRel
 # =============================================================================
 # =============================================================================
 
@@ -22,7 +22,7 @@ rule CUSTOM_COMMAND
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__tfm_qcbor_s_Debug
+rule C_COMPILER__tfm_qcbor_s_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -32,7 +32,7 @@ rule C_COMPILER__tfm_qcbor_s_Debug
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__tfm_qcbor_s_Debug
+rule C_STATIC_LIBRARY_LINKER__tfm_qcbor_s_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E rm -f $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -41,7 +41,7 @@ rule C_STATIC_LIBRARY_LINKER__tfm_qcbor_s_Debug
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__tfm_t_cose_s_Debug
+rule C_COMPILER__tfm_t_cose_s_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -51,7 +51,7 @@ rule C_COMPILER__tfm_t_cose_s_Debug
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__tfm_t_cose_s_Debug
+rule C_STATIC_LIBRARY_LINKER__tfm_t_cose_s_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E rm -f $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -60,7 +60,7 @@ rule C_STATIC_LIBRARY_LINKER__tfm_t_cose_s_Debug
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__tfm_fih_implementation_Debug
+rule C_COMPILER__tfm_fih_implementation_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -70,7 +70,7 @@ rule C_COMPILER__tfm_fih_implementation_Debug
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__tfm_fih_implementation_Debug
+rule C_STATIC_LIBRARY_LINKER__tfm_fih_implementation_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E rm -f $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -79,7 +79,7 @@ rule C_STATIC_LIBRARY_LINKER__tfm_fih_implementation_Debug
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__tfm_s_veneers_Debug
+rule C_STATIC_LIBRARY_LINKER__tfm_s_veneers_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E rm -f $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -88,7 +88,7 @@ rule C_STATIC_LIBRARY_LINKER__tfm_s_veneers_Debug
 #############################################
 # Rule for compiling ASM files.
 
-rule ASM_COMPILER__tfm_s_Debug
+rule ASM_COMPILER__tfm_s_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -98,7 +98,7 @@ rule ASM_COMPILER__tfm_s_Debug
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__tfm_s_Debug
+rule C_COMPILER__tfm_s_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -108,7 +108,7 @@ rule C_COMPILER__tfm_s_Debug
 #############################################
 # Rule for linking C executable.
 
-rule C_EXECUTABLE_LINKER__tfm_s_Debug
+rule C_EXECUTABLE_LINKER__tfm_s_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $FLAGS -mcpu=cortex-m33+nodsp $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking C executable $TARGET_FILE
   restat = $RESTAT
@@ -117,7 +117,7 @@ rule C_EXECUTABLE_LINKER__tfm_s_Debug
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__tfm_spm_Debug
+rule C_COMPILER__tfm_spm_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -127,7 +127,7 @@ rule C_COMPILER__tfm_spm_Debug
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__tfm_spm_Debug
+rule C_STATIC_LIBRARY_LINKER__tfm_spm_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E rm -f $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -136,7 +136,7 @@ rule C_STATIC_LIBRARY_LINKER__tfm_spm_Debug
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__tfm_sprt_Debug
+rule C_COMPILER__tfm_sprt_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -146,7 +146,7 @@ rule C_COMPILER__tfm_sprt_Debug
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__tfm_sprt_Debug
+rule C_STATIC_LIBRARY_LINKER__tfm_sprt_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E rm -f $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -155,7 +155,7 @@ rule C_STATIC_LIBRARY_LINKER__tfm_sprt_Debug
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__tfm_psa_rot_partition_crypto_Debug
+rule C_COMPILER__tfm_psa_rot_partition_crypto_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -165,7 +165,7 @@ rule C_COMPILER__tfm_psa_rot_partition_crypto_Debug
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__tfm_psa_rot_partition_crypto_Debug
+rule C_STATIC_LIBRARY_LINKER__tfm_psa_rot_partition_crypto_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E rm -f $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -174,7 +174,7 @@ rule C_STATIC_LIBRARY_LINKER__tfm_psa_rot_partition_crypto_Debug
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__mbedcrypto_base_relwithdebinfo
+rule C_COMPILER__mbedcrypto_base_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -184,7 +184,7 @@ rule C_COMPILER__mbedcrypto_base_relwithdebinfo
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__mbedcrypto_base_relwithdebinfo
+rule C_STATIC_LIBRARY_LINKER__mbedcrypto_base_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E rm -f $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -193,7 +193,7 @@ rule C_STATIC_LIBRARY_LINKER__mbedcrypto_base_relwithdebinfo
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__crypto_service_mbedcrypto_relwithdebinfo
+rule C_COMPILER__crypto_service_mbedcrypto_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -203,7 +203,7 @@ rule C_COMPILER__crypto_service_mbedcrypto_relwithdebinfo
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__crypto_service_mbedcrypto_relwithdebinfo
+rule C_STATIC_LIBRARY_LINKER__crypto_service_mbedcrypto_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E rm -f $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -212,7 +212,7 @@ rule C_STATIC_LIBRARY_LINKER__crypto_service_mbedcrypto_relwithdebinfo
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__tfm_psa_rot_partition_platform_Debug
+rule C_COMPILER__tfm_psa_rot_partition_platform_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -222,7 +222,7 @@ rule C_COMPILER__tfm_psa_rot_partition_platform_Debug
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__tfm_psa_rot_partition_platform_Debug
+rule C_STATIC_LIBRARY_LINKER__tfm_psa_rot_partition_platform_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E rm -f $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -231,7 +231,7 @@ rule C_STATIC_LIBRARY_LINKER__tfm_psa_rot_partition_platform_Debug
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__platform_ns_Debug
+rule C_COMPILER__platform_ns_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -241,7 +241,7 @@ rule C_COMPILER__platform_ns_Debug
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__platform_ns_Debug
+rule C_STATIC_LIBRARY_LINKER__platform_ns_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E rm -f $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -250,7 +250,7 @@ rule C_STATIC_LIBRARY_LINKER__platform_ns_Debug
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__platform_s_Debug
+rule C_COMPILER__platform_s_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -260,7 +260,7 @@ rule C_COMPILER__platform_s_Debug
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__platform_s_Debug
+rule C_STATIC_LIBRARY_LINKER__platform_s_MinSizeRel
   command = $PRE_LINK && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E rm -f $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib $TARGET_FILE && /opt/nordic/ncs/toolchains/v2.2.0/Cellar/cmake/3.20.5/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -269,7 +269,7 @@ rule C_STATIC_LIBRARY_LINKER__platform_s_Debug
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__tfm_s_scatter_Debug
+rule C_COMPILER__tfm_s_scatter_MinSizeRel
   depfile = $DEP_FILE
   deps = gcc
   command = /opt/nordic/ncs/toolchains/v2.2.0/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
