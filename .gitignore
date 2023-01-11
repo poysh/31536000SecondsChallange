@@ -30,4 +30,4 @@ xcuserdata/
 ### Zephyr ###
 # Ignore build directory
 **/build/
-*/build/
+led_ws2812/build/
