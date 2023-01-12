@@ -178,6 +178,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+**/opencv-env/
+
 
 # Spyder project settings
 .spyderproject
