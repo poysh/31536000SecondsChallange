@@ -30,9 +30,10 @@ image = cv2.imread('Apollo-8-Launch.jpg')
 plt.figure(figsize=[5, 5])
 plt.imshow(image)
 plt.title('Apollo-8-Launch.png', fontsize=16)
+plt.show()
 
 
-def draw_banner_text(frame, text, banner_height_percent=0.05, text_color=(0, 255, 0)):
+def drawBannerText(frame, text, banner_height_percent=0.05, text_color=(0, 255, 0)):
     # Draw a black filled banner across the top of the image frame.
     # percent: set the banner height as a percentage of the frame height.
     banner_height = int(banner_height_percent * frame.shape[0])
@@ -46,7 +47,7 @@ def draw_banner_text(frame, text, banner_height_percent=0.05, text_color=(0, 255
     cv2.putText(frame, text, location, cv2.FONT_HERSHEY_PLAIN, fontScale, text_color, fontThickness, cv2.LINE_AA)
 
 
-draw_banner_text(image, "Apollo 8 Saturn V Launch, 1968", banner_height_percent=0.05, text_color=(0, 255, 0))
+drawBannerText(image, "Apollo 8 Saturn V Launch, 1968", banner_height_percent=0.05, text_color=(0, 255, 0))
 
 plt.figure(figsize=[5, 5])
 plt.imshow(image)
