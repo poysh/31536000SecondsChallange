@@ -50,3 +50,52 @@ async def read_multiple_items(q: list[str] | None = Query(default=None)):
 async def read_items(q: list[str] = Query(default=["foo", "bar"])):
     query_items = {"q": q}
     return query_items
+
+
+# metadata is shown in OpenAPI
+@app.get("/items6/")
+async def read_items_metadata(q: str | None = Query(default=None, title="Query string",
+                                                    description="Query string for the items to search in the database",
+                                                    min_length=3)):
+    results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
+    if q:
+        results.update({"q": q})
+    return results
+
+
+# alias makes non valid python variable names possible item_query -> item-query
+@app.get("/items7/")
+async def read_alias_item(q: str | None = Query(default=None, alias="item-query")):
+    results = {'items': [{'item_id': 'Foo'}, {"item_id": "Bar"}]}
+    if q:
+        results.update({"q": q})
+    return results
+
+
+@app.get("/items8/")
+async def read_alias_item(q: str | None = Query(
+    default=None,
+    alias="item-query",
+    title="Query string",
+    description="Query string for the items to search in the database that have a good match",
+    min_length=3,
+    max_length=50,
+    regex="^fixedquery$",
+    deprecated=True,
+    )
+):
+    results = {'items': [{'item_id': 'Foo'}, {"item_id": "Bar"}]}
+    if q:
+        results.update({"q": q})
+    return results
+
+
+# exclude from OpenAPI documentation
+@app.get("/items9/")
+async def read_items(
+    hidden_query: str | None = Query(default=None, include_in_schema=False)
+):
+    if hidden_query:
+        return {"hidden_query": hidden_query}
+    else:
+        return {"hidden_query": "Not found"}
