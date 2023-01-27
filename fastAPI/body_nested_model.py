@@ -18,6 +18,13 @@ class Item(BaseModel):
     image: Image | None = None
 
 
+class Offer(BaseModel):
+    name: str
+    description: str | None = None
+    price: float
+    items: list[Item]
+
+
 # Expected body
 # {
 #     "name": "Foo",
@@ -34,3 +41,21 @@ class Item(BaseModel):
 async def update_item(item_id: int, item: Item = Body(embed=True)):
     results = {"item_id": item_id, "item": item}
     return results
+
+
+# Notice how Offer has a list of Items, which in turn have an optional list of Images
+@app.post("/offers/")
+async def create_offer(offer: Offer):
+    return offer
+
+
+@app.post("/images/multiple/")
+async def create_multiple_images(*, images: list[Image]):
+    for image in images:
+        print(image.url)
+    return images
+
+
+@app.post("/index-weights/")
+async def create_index_weights(weights: dict[int, float]):
+    return weights
