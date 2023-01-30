@@ -1,5 +1,6 @@
 from typing import Any
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel, EmailStr
 
 app = FastAPI()
@@ -23,10 +24,10 @@ class Item(BaseModel):
     description: str | None = None
     price: float
     tax: float | None = None
-    tags: list[str] = []
+    # tags: list[str] = []
 
 
-@app.post("/items/", response_model=Item)
+@app.post("/items/", response_model=Item, response_model_exclude_unset=True)
 async def create_item(item: Item) -> Any:
     return item
 
@@ -37,6 +38,23 @@ async def read_items() -> Any:
         Item(name="Portal Gun", price=42.0),
         Item(name="Plumbus", price=32.0),
     ]
+
+
+items = {
+    "foo": {"name": "Foo", "price": 50.2},
+    "bar": {"name": "Bar", "description": "The Bar fighters", "price": 62, "tax": 20.2},
+    "baz": {
+        "name": "Baz",
+        "description": "There goes my baz",
+        "price": 50.2,
+        "tax": 10.5,
+    },
+}
+
+
+@app.get("/v1/items/{item_id}/public", response_model=Item, response_model_exclude={"tax"})
+async def read_item_public_data(item_id: str):
+    return items[item_id]
 
 
 @app.post("/user/", response_model=UserOut)
@@ -57,3 +75,10 @@ class UserIn(BaseUser):
 @app.post("/user1/")
 async def creature_user(user: UserIn) -> BaseUser:
     return user
+
+
+@app.get("/portal", response_model=None)
+async def get_portal(teleport: bool = False) -> Response | dict:
+    if teleport:
+        return RedirectResponse(url="https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+    return {"message": "Here's your interdimensional portal."}
