@@ -2,3 +2,5 @@ fastapi[all]>=0.89.1
 uvicorn[standard]
 pydantic>=1.10.4
 starlette==0.23.1
+SQLAlchemy>=2.0.1
+passlib>=1.7.4
