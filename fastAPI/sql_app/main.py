@@ -46,9 +46,9 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return items
 
 
-# @app.post("/items/", response_model=schemas.Item)
-# def create_item(item: schemas.ItemCreate, db: Session = Depends(get_db)):
-#     db_item = crud.get_item_by_user(db, item=item, user_id=1)
-#     if db_item:
-#         raise HTTPException(status_code=400, detail="Item already registered")
-#     return db_item
+@app.post("/{user_id}/items/", response_model=schemas.Item)
+def create_item(item: schemas.ItemCreate, user_id: int, db: Session = Depends(get_db)):
+    db_user = crud.get_user(db, user_id=user_id)
+    if not db_user:
+        raise HTTPException(status_code=400, detail="User does not exist")
+    return crud.create_user_item(db=db, item=item, user_id=user_id)
