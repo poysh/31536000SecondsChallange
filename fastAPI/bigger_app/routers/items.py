@@ -18,6 +18,7 @@ async def read_items():
     return fake_items_db
 
 
+# returns a single item
 @router.get("/{item_id}")
 async def read_item(item_id: str):
     if item_id not in fake_items_db:
